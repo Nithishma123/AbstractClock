@@ -45,7 +45,7 @@
       // Draw second hand
       let sAngle = map(s, 0, 60, 0, TWO_PI);
       rotate(-mAngle); // Compensate for the minute hand rotation
-      rotate(sAngle);
+      rotate(radians(sAngle));
       fill(0, 0, 255);
       rect(-100, -2, 200, 4);
     }
