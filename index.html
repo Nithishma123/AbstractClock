@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creative Clock</title>
+  <title>Dynamic Clock</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
   <style>
     body {
@@ -29,27 +29,25 @@
       let m = minute();
       let s = second();
 
-      // Example: Rotate based on the current hour
-      let hAngle = map(h % 12, 0, 12, 0, TWO_PI);
+      // Draw hour hand
+      let hAngle = map(h % 12 + m / 60, 0, 12, 0, TWO_PI);
       rotate(hAngle);
       fill(255, 0, 0);
       rect(-50, -5, 100, 10);
 
-      // Example: Scale based on the current minute
-      let mScale = map(m, 0, 60, 0.5, 2);
-      scale(mScale);
+      // Draw minute hand
+      let mAngle = map(m + s / 60, 0, 60, 0, TWO_PI);
+      rotate(-hAngle); // Compensate for the hour hand rotation
+      rotate(mAngle);
       fill(0, 255, 0);
-      ellipse(0, 0, 50, 50);
+      rect(-75, -3, 150, 6);
 
-      // Example: Change color based on the current second
-      let sColor = map(s, 0, 60, 0, 255);
-      fill(sColor, 0, 255 - sColor);
-      triangle(0, -50, -20, 20, 20, 20);
-
-      // Print minute value to the console when it changes
-      if (frameCount % 60 === 0) {
-        console.log("Minute:", m);
-      }
+      // Draw second hand
+      let sAngle = map(s, 0, 60, 0, TWO_PI);
+      rotate(-mAngle); // Compensate for the minute hand rotation
+      rotate(sAngle);
+      fill(0, 0, 255);
+      rect(-100, -2, 200, 4);
     }
   </script>
 </body>
