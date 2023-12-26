@@ -1,53 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic Clock</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  <style>
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
-  </style>
-</head>
-<body>
-  <script>
-    function setup() {
-      createCanvas(400, 400);
-    }
-
-    function draw() {
-      background(255);
-      translate(width / 2, height / 2);
-
-      let h = hour();
-      let m = minute();
-      let s = second();
-
-      let hAngle = map(h % 12 + m / 60, 0, 12, 0, TWO_PI);
-      rotate(radians(hAngle));
-      fill(255, 0, 0);
-      rect(-50, -5, 100, 10);
-
-      // Draw minute hand
-      let mAngle = map(m + s / 60, 0, 60, 0, TWO_PI);
-      rotate(-hAngle); // Compensate for the hour hand rotation
-      rotate(randians(mAngle));
-      fill(0, 255, 0);
-      rect(-75, -3, 150, 6);
-
-      // Draw second hand
-      let sAngle = map(s, 0, 60, 0, TWO_PI);
-      rotate(-mAngle); // Compensate for the minute hand rotation
-      rotate(radians(sAngle));
-      fill(0, 0, 255);
-      rect(-100, -2, 200, 4);
-    }
-  </script>
-</body>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js example</title>
+    <style> body {padding: 0; margin: 0;} </style>
+    <script src="p5.min.js"></script>
+    <script src="sketch.js"></script>
+  </head>
+  <body>
+  </body>
 </html>
