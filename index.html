@@ -29,46 +29,15 @@
       let m = minute();
       let s = second();
 
-      // Draw hour hand
-        noStroke();
-  fill(255);
-  translate(width/2, height/2);
-  rotate(radians(h));
-  rect(-2,-125,2,125);
-  pop();
-  
-  
-   //minute
-
-  push();
-  noStroke();
-  fill(255);
-  translate(width/2, height/2);
-  rotate(radians(m));
-  rect(0, -170,2,170);
-  pop();
-  
-
-  //seconds
- push();
-  noStroke();
-  fill(255);
-    translate(width/2, height/2);
-    rotate(radians(s));
-    push();
-      translate(0, -150);
-      rect(0,-10,1,160);
-    pop();
-  pop();
       let hAngle = map(h % 12 + m / 60, 0, 12, 0, TWO_PI);
-      rotate(hAngle);
+      rotate(radians(hAngle));
       fill(255, 0, 0);
       rect(-50, -5, 100, 10);
 
       // Draw minute hand
       let mAngle = map(m + s / 60, 0, 60, 0, TWO_PI);
       rotate(-hAngle); // Compensate for the hour hand rotation
-      rotate(mAngle);
+      rotate(randians(mAngle));
       fill(0, 255, 0);
       rect(-75, -3, 150, 6);
 
