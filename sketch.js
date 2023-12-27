@@ -1,22 +1,51 @@
-// setup() is called once at page-load
+let lastMinuteChange = 0;
+let backgroundColors = [];
+
 function setup() {
-    createCanvas(800,600); // make an HTML canvas element width x height pixels
+  createCanvas(400, 400);
 }
 
-// draw() is called 60 times per second
 function draw() {
-    let hr = map((hour()%12), 0, 12, 0, 360);
-    let min = map(minute(), 0, 60, 0, 360);
-    let sec = map(second(), 0, 60, 0, 360);
-    let c = map(second(), 0, 60, 100, 255);
+  let h = hour();
+  let m = minute();
+  let s = second();
 
-    background(225);
-    frameRate(30);
-    push();
-    rotate(radians(hr));
-    rect(-2,-125,2,125);
-    fill(180);
-    rotate(radians(min));
-    fill(100);
-    rotate(radians(sec));
+  // Check if a minute has passed
+  if (m !== lastMinuteChange) {
+    // Update background color every minute
+    updateBackground();
+    lastMinuteChange = m;
+  } else {
+    // Clear the background to prevent traces
+    background(backgroundColors[0], backgroundColors[1], backgroundColors[2]);
+  }
+
+  translate(width / 2, height / 2);
+
+  // Draw hour hand
+  let hAngle = map(h % 12 + m / 60, 0, 12, 0, TWO_PI);
+  rotate(hAngle);
+  fill(255, 0, 0);
+  rect(-50, -5, 100, 10);
+
+  // Draw minute hand
+  let mAngle = map(m + s / 60, 0, 60, 0, TWO_PI);
+  rotate(-hAngle); // Compensate for the hour hand rotation
+  rotate(mAngle);
+  fill(0, 255, 0);
+  rect(-75, -3, 150, 6);
+
+  // Draw smooth ticking seconds hand
+  let smoothSeconds = s + (frameCount % 60) / 60;
+  let sAngle = map(smoothSeconds, 0, 60, 0, TWO_PI);
+  rotate(-mAngle); // Compensate for the minute hand rotation
+  rotate(sAngle);
+  fill(0, 0, 255);
+  rect(-100, -2, 200, 4);
+}
+
+function updateBackground() {
+  // Update background color
+  backgroundColors = [random(255), random(255), random(255)];
+  background(backgroundColors[0], backgroundColors[1], backgroundColors[2]);
 }
