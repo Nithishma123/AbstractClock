@@ -5,16 +5,18 @@ function setup() {
 
 // draw() is called 60 times per second
 function draw() {
-    let hr = hour();
-    let min = minute();
-    let sec = second();
+    let hr = map((hour()%12), 0, 12, 0, 360);
+    let min = map(minute(), 0, 60, 0, 360);
+    let sec = map(second(), 0, 60, 0, 360);
+    let c = map(second(), 0, 60, 100, 255);
 
     background(225);
-    textSize(32);
+    frameRate(30);
+    push();
+    rotate(radians(hr));
+    rect(-2,-125,2,125);
     fill(180);
-    text(hr, 10, 30);
+    rotate(radians(min));
     fill(100);
-    text(min, 10, 60);
-    fill(0);
-    text(sec, 10, 90);
+    rotate(radians(sec));
 }
