@@ -2,7 +2,7 @@ let lastMinChange = 0;
 let bgColor = [];
 
 function setup() {
-  createCanvas(800,60);
+  createCanvas(500,500);
 }
 
 function draw() {
@@ -32,7 +32,7 @@ function draw() {
   rect(-75,-3,150,6);
 
   let tick = s + (frameCount % 60) / 60;
-  let sAngle = map(ticl, 0, 60, TWO_PI);
+  let sAngle = map(tick, 0, 60,0, TWO_PI);
   rotate(-mAngle);
   rotate(sAngle);
   fill(0, 0, 128);
@@ -41,5 +41,5 @@ function draw() {
 
 function updateBackground() {
   bgColor = [random(255), random(255), random(255)];
-  background(bgColor[0], , bgColor[1], bgColor[2]);
+  background(bgColor[0], bgColor[1], bgColor[2]);
 }
