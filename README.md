@@ -1,6 +1,7 @@
 
 ---
-
+# Name : Nithishma Allu
+# UNI : na3062
 # CIFAR-10 Training with ResNet18
 
 This repository contains a collection of experiments for training a ResNet18 model on the CIFAR-10 dataset using PyTorch. The experiments include different optimizers, profiling, comparisons between GPU and CPU training, and exploring different data loader configurations.
@@ -29,7 +30,7 @@ The main script is designed to run all experiments with a single command.
 ### Usage
 
 ```bash
-python main.py [--use-cuda] [--data-path DATA_PATH] [--num-workers NUM_WORKERS] [--optimizer OPTIMIZER]
+python lab2.py [--use-cuda] [--data-path DATA_PATH] [--num-workers NUM_WORKERS] [--optimizer OPTIMIZER]
 ```
 
 ### Options:
@@ -42,7 +43,7 @@ python main.py [--use-cuda] [--data-path DATA_PATH] [--num-workers NUM_WORKERS] 
 ### Example command to run all experiments on GPU with 4 DataLoader workers:
 
 ```bash
-python main.py --use-cuda --num-workers 4 --optimizer adam
+python lab2.py --use-cuda --num-workers 4 --optimizer adam
 ```
 
 ### Experiments Overview:
